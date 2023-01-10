@@ -1,2 +1,9 @@
 # DATC_project
-Here will be the description of our project
+
+Ambrosia Alert
+
+--- MEAN stack APP ----
+
+Database: MongoDB
+Backend: NodeJS, expressJs
+Frontend: Angular 15
