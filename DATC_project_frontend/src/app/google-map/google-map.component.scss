@@ -1,0 +1,36 @@
+.step_text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  background: #86b5f0;
+  border-radius: 20px;
+}
+
+.modal__show {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 28%;
+  left: 29%;
+  padding: 100px;
+  border-radius: 20px;
+  font-size: 20px;
+  gap: 25px;
+  text-align: center;
+}
+
+.map_windows {
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  align-content: center;
+  flex-direction: column;
+}
+
+.delete {
+  padding: 3px;
+  margin-top: 10px;
+}

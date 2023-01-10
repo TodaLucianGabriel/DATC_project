@@ -3,11 +3,29 @@
     <div
       class="row d-flex align-items-center justify-content-center text-align-center"
     >
-      <h1 class="homeTitle">
-        Here is an App where you can place a marker on the map and write which
-        type of allergic you met!
-      </h1>
-      <app-google-map></app-google-map>
+      <div
+        class="homeTitle_container d-flex justify-content-space-around"
+        *ngIf="!(user | async)"
+      >
+        <h1 class="homeTitle">
+          Welcome!
+          <span style="color: rgb(31, 51, 155); font-size: 26px"
+            >Help people with allergies know where to go in your city so they
+            don't pass by. Try it out!</span
+          >
+          <a class="btn btn-primary" routerLink="/register"
+            >Register first to use the app!</a
+          >
+        </h1>
+        <img
+          class="home__image"
+          src="../../assets/images/maphomepage.jpg"
+          alt=""
+        />
+      </div>
+      <div class="google_map" *ngIf="user | async">
+        <app-google-map></app-google-map>
+      </div>
     </div>
   </div>
 </main>

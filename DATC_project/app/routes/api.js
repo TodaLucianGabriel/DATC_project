@@ -1,4 +1,5 @@
 var User = require("../models/user");
+var Location = require("../models/location");
 var jwt = require("jsonwebtoken");
 var bcrypt = require("bcrypt-nodejs");
 
@@ -56,6 +57,70 @@ module.exports = function (router) {
       }
     });
   });
+
+  router.post("/location", function (req, res) {
+    var data = new Location();
+    data.id = req.body.id;
+    data.position = JSON.stringify(req.body.position);
+    data.description = req.body.description;
+
+    data.save((err, locationData) => {
+      if (err) {
+        console.log(err);
+        res.send("Location doesn't save");
+      } else {
+        res.status(200);
+        res.send({ message: "Success" });
+      }
+    });
+  });
+
+  router.get("/location", function (req, res) {
+    Location.find({}, (err, location) => {
+      if (err) {
+        console.log(error);
+      } else {
+        res.send(location);
+      }
+    });
+  });
+
+  router.delete("/location/:id", function (req, res) {
+    var id = req.params.id;
+    console.log(id);
+    Location.deleteOne({ id: id }, (err, location) => {
+      if (err) {
+        console.log(error);
+      } else {
+        res.status(200);
+        res.send({ message: "Success" });
+      }
+    });
+  });
+
+  router.get("/users", function (req, res) {
+    User.find({}, (err, user) => {
+      if (err) {
+        console.log(error);
+      } else {
+        res.send(user);
+      }
+    });
+  });
+
+  router.delete("/users/:username", function (req, res) {
+    var username = req.params.username;
+    //console.log(id);
+    User.deleteOne({ username: username }, (err, user) => {
+      if (err) {
+        console.log(error);
+      } else {
+        res.status(200);
+        res.send({ message: "Success! The user was deleted!" });
+      }
+    });
+  });
+
   return router;
 };
 

@@ -1,56 +1,69 @@
 <header class="p-3 text-bg-dark">
-   <div class="container">
-     <div
-       class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start"
-     >
-       <a
-         href="/"
-         class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none"
-       >
-         <img
-           src="../assets/images/allergic-reaction-scaled.jpg"
-           alt="Ambrosia Allergic"
-           style="width: 30px; height: 30px"
-         />
-       </a>
+  <div class="container">
+    <div
+      class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start"
+    >
+      <a
+        href="/"
+        class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none"
+      >
+        <img
+          src="../assets/images/allergic-reaction-scaled.jpg"
+          alt="Ambrosia Allergic"
+          style="width: 30px; height: 30px"
+        />
+      </a>
 
-       <ul
-         class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"
-       >
-         <li>
-           <a href="#" class="nav-link px-2 text-white" routerLink="/home"
-             >Allergic Alert App</a
-           >
-         </li>
-         <li>
-           <a href="#" class="nav-link px-2 text-secondary" routerLink="/home"
-             >Home</a
-           >
-         </li>
-       </ul>
+      <ul
+        class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"
+      >
+        <li>
+          <a href="#" class="nav-link px-2 text-white" routerLink="/home"
+            >Allergic Alert App</a
+          >
+        </li>
+        <li>
+          <a href="#" class="nav-link px-2 text-secondary" routerLink="/home"
+            >Home</a
+          >
+        </li>
+        <li *ngIf="user | async as userData">
+          <a
+            href="#"
+            class="nav-link px-2 text-secondary"
+            routerLink="/dashboard"
+            *ngIf="userData.username == 'admin'"
+            >Dashboard</a
+          >
+        </li>
+      </ul>
 
-       <div class="text-end" *ngIf="!(user | async)">
-         <a
-           type="button"
-           routerLink="/login"
-           class="btn btn-outline-light me-2"
-         >
-           Login
-         </a>
-         <a type="button" routerLink="/register" class="btn btn-warning">
-           Sign-up
-         </a>
-       </div>
-       <div class="text-end" *ngIf="user | async as userData">
-         <div class="user d-flex align-items-center">
-           <span class="userShow"
-             >You're logged in! Welcome
-             <span class="userShowUsername">{{ userData.username }}</span>
-             !</span
-           >
-           <button class="btn btn-primary" (click)="logout()">Log out</button>
-         </div>
-       </div>
-     </div>
-   </div>
- </header>
+      <div class="text-end" *ngIf="!(user | async)">
+        <a type="button" routerLink="/login" class="btn btn-outline-light me-2">
+          Login
+        </a>
+        <a type="button" routerLink="/register" class="btn btn-warning">
+          Sign-up
+        </a>
+      </div>
+      <div class="text-end" *ngIf="user | async as userData">
+        <div class="user d-flex align-items-center">
+          <span class="userShow" style="margin-right: 20px"
+            >You're logged in! Welcome
+            <span
+              class="userShowUsername"
+              style="
+                font-size: 17px;
+                font-family: 'Poppins', sans-serif;
+                color: #32ceff;
+              "
+              >{{ userData.username }}</span
+            >
+            !</span
+          >
+          <button class="btn btn-primary" (click)="logout()">Log out</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

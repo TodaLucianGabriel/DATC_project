@@ -31,9 +31,9 @@ mongoose.connect(
   }
 );
 
-app.get("*", function (req, res) {
-  res.send("Salut Lucica , ti-a mers serverul");
-});
+// app.get("*", function (req, res) {
+//   res.send("Salut Lucica , ti-a mers serverul");
+// });
 
 app.listen(port, function () {
   console.log("Running the server on port " + port);
