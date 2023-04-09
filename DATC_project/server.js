@@ -5,6 +5,7 @@ var morgan = require("morgan");
 var mongoose = require("mongoose");
 var cors = require("cors");
 var router = require("express");
+var module = require("path");
 
 var appRoutes = require("./app/routes/api")(router);
 //var path = require("path");
@@ -34,6 +35,11 @@ mongoose.connect(
 // app.get("*", function (req, res) {
 //   res.send("Salut Lucica , ti-a mers serverul");
 // });
+
+app.use(express.static("../DATC_project_frontend"));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../DATC_project_frontend/src/index.html"));
+});
 
 app.listen(port, function () {
   console.log("Running the server on port " + port);
